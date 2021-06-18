@@ -1,0 +1,209 @@
+﻿@model CatalogViewModel
+<!--=============================================
+    =            shop page content         =
+    =============================================-->
+
+<div class="shop-page-wrapper">
+
+    <!--=======  shop page header  =======-->
+
+    <div class="shop-page-header">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-12 col-lg-7 col-md-10 d-none d-md-block">
+                    <!--=======  fitler titles  =======-->
+                    <div class="filter-title filter-title--type-two">
+                        <ul class="product-filter-menu">
+                            <li class="active" data-filter="*">Все</li>                            
+                        </ul>
+                    </div>
+                    <!--=======  End of fitler titles  =======-->
+                </div>
+
+                <div class="col-12 col-lg-5 col-md-2">
+                    <!--=======  filter icons  =======-->
+
+                    <div class="filter-icons">
+                        <!--=======  filter dropdown  =======-->
+
+                        <div class="single-icon filter-dropdown">
+                            <select class="nice-select">
+                                <option value="0">по возрастанию цены</option>
+                                <option value="1">по убыванию цены</option>
+                                <option value="0">по популярности</option>
+                                <option value="0">по дате добавления</option>                               
+                            </select>
+                        </div>
+
+                        <!--=======  End of filter dropdown  =======-->
+                        <!--=======  grid icons  =======-->
+
+                        <div class="single-icon grid-icons">
+                            <a data-target="five-column" href="javascript:void(0)"><i class="ti-layout-grid4-alt"></i></a>
+                            <a data-target="four-column" class="active" href="javascript:void(0)">
+                                <i class="ti-layout-grid3-alt"></i>
+                            </a>
+                            <a data-target="three-column" href="javascript:void(0)"><i class="ti-layout-grid2-alt"></i></a>
+                            <a data-target="list" href="javascript:void(0)"><i class="ti-view-list"></i></a>
+                        </div>
+
+                        <!--=======  End of grid icons  =======-->                       
+                    </div>
+
+                    <!--=======  End of filter icons  =======-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--=======  End of shop page header  =======-->
+
+    <!--=============================================
+    =            shop page content         =
+    =============================================-->
+
+    <div class="shop-page-content mt-100 mb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 order-2 order-lg-1">
+                    <!--=======  page sidebar  =======-->
+
+                    <div class="page-sidebar">
+                        <!--=======  single sidebar widget  =======-->
+
+                        <div class="single-sidebar-widget mb-40">
+                            <!--=======  search widget  =======-->
+
+                            <div class="search-widget">
+                                <form action="#">
+                                    <input type="search" placeholder="Найти товар ...">
+                                    <button type="button"><i class="ion-android-search"></i></button>
+                                </form>
+                            </div>
+
+                            <!--=======  End of search widget  =======-->
+                        </div>
+
+
+                        <!--=======  End of single sidebarwidget  =======-->
+                        <!--=======  single sidebar widget  =======-->
+
+                        <div class="single-sidebar-widget mb-40">
+                            <h2 class="single-sidebar-widget--title">Категории</h2>
+                            <ul class="single-sidebar-widget--list single-sidebar-widget--list--category">
+                                <li><a href="shop-left-sidebar.html">Стикеры </a> <span class="quantity">14</span></li>
+                                <li><a href="shop-left-sidebar.html">Наклейки </a> <span class="quantity">14</span></li>
+                                <li><a href="shop-left-sidebar.html">Скрепки </a> <span class="quantity">8</span></li>
+                                <li><a href="shop-left-sidebar.html">Конверты </a> <span class="quantity">12</span></li>
+                                <li><a href="shop-left-sidebar.html">Ручки, маркеры </a> <span class="quantity">4</span></li>
+                                <li><a href="shop-left-sidebar.html">Блокноты </a> <span class="quantity">1</span></li>
+                            </ul>
+                        </div>
+
+                        <!--=======  End of single sidebar widget  =======-->
+                        <!--=======  single sidebar widget  =======-->
+
+                        <div class="single-sidebar-widget mb-40">
+                            <h2 class="single-sidebar-widget--title">Фильтр</h2>
+                            <div class="sidebar-price">
+                                <div id="price-range"></div>
+                                <div class="output-wrapper mt-20">
+                                    <input type="text" id="price-amount" class="price-amount" readonly>                                  
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--=======  End of single sidebar widget  =======-->                                         
+                    </div>
+
+                    <!--=======  End of page sidebar  =======-->
+                </div>
+                <div class="col-lg-9 order-1 order-lg-2 mb-md-80 mb-sm-80">
+
+                    <div class="row product-isotope shop-product-wrap four-column">
+
+                        @foreach (var product in Model.Products)
+                        {
+                            <!--=======  single product  =======-->
+                            <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-45">
+                                <div class="single-product">
+                                    <!--=======  single product image  =======-->
+
+                                    <div class="single-product__image">
+                                        <a class="image-wrap" href="@Url.Action("Product", "Catalog", new { id = product.Id })">
+                                            <img src="lezada/assets/images/products/cloth-1-1-600x800.jpg" class="img-fluid" alt="">
+                                            <img src="lezada/assets/images/products/cloth-1-2-600x800.jpg" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+
+                                    <!--=======  End of single product image  =======-->
+                                    <!--=======  single product content  =======-->
+
+                                    <div class="single-product__content">                                      
+                                        <div class="title">
+                                            <h3> <a href="@Url.Action("Product", "Catalog", new { id = product.Id })">@product.Title</a></h3>
+                                            <a href="#">В корзину</a>
+                                        </div>
+                                        <div class="price">
+                                            <span class="main-price">₴ @product.Price</span>
+                                        </div>
+                                    </div>
+
+                                    <!--=======  End of single product content  =======-->
+                                </div>
+                                <div class="single-product--list">
+                                    <!--=======  single product image  =======-->
+
+                                    <div class="single-product__image">
+                                        <a class="image-wrap" href="@Url.Action("Product", "Catalog", new { id = product.Id })">
+                                            <img src="lezada/assets/images/products/cloth-1-1-600x800.jpg" class="img-fluid" alt="">
+                                            <img src="lezada/assets/images/products/cloth-1-2-600x800.jpg" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+
+                                    <!--=======  End of single product image  =======-->
+                                    <!--=======  single product content  =======-->
+
+                                    <div class="single-product__content">
+
+                                        <div class="title">
+                                            <h3> <a href="@Url.Action("Product", "Catalog", new { id = product.Id })">@product.Title</a></h3>
+                                        </div>
+                                        <div class="price">
+                                            <span class="main-price">₴ @product.Price</span>
+                                        </div>
+                                        <p class="short-desc">
+                                            @product.Description
+                                        </p>
+
+                                        <a href="#" class="lezada-button lezada-button--medium">В корзину</a>
+
+                                    </div>
+
+                                    <!--=======  End of single product content  =======-->
+                                </div>
+                            </div>
+                            <!--=======  End of single product  =======-->
+                        }
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 text-center mt-30">
+                            <a class="lezada-button lezada-button--medium lezada-button--icon--left" href="#">
+                                <i class="ion-android-add"></i> Показать еще
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--=====  End of shop page content  ======-->
+</div>
+
+<!--=====  End of shop page content  ======-->
